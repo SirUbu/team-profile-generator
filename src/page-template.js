@@ -22,11 +22,11 @@ function uniqueItem(teamMember) {
     }
 
     if (teamMember.github) {
-        return `<div class="list-group-item">GitHub: <a href="https://github.com/${teamMember.getGithub()}">${teamMember.getGithub()}</a></div>`
+        return `<div class="list-group-item">GitHub: <a href="https://github.com/${teamMember.getGithub()}" target="_blank">${teamMember.getGithub()}</a></div>`
     }
 
     if (teamMember.school) {
-        return `<div class="list-group-item">School: <a href="https://google.com/${teamMember.getSchool()}">${teamMember.getSchool()}</a></div>`
+        return `<div class="list-group-item">School: <a href="https://google.com/search?q=${teamMember.getSchool()}" target="_blank">${teamMember.getSchool()}</a></div>`
 
     }
 };
@@ -39,7 +39,7 @@ function cardGenerator(teamData) {
             let teamMember = teamData[i];
             cards += `
             <div class="card rounded-3 bg-secondary m-2" style="width: 300px">
-                <div class="card-title bg-primary p-1">
+                <div class="card-title bg-primary text-light p-2">
                     <h3>${teamMember.getName()}</h3>
                     <h5>${iconSelector(teamMember.getRole())}</h5>
                 </div>
@@ -75,7 +75,7 @@ module.exports = teamData => {
     </head>
     <body class="bg-light">
         <header>
-            <h1 class="bg-danger bg-gradient text-center p-3">My Team</h1>
+            <h1 class="bg-danger bg-gradient text-center text-light p-3">My Team</h1>
         </header>
 
         <main>
@@ -86,7 +86,7 @@ module.exports = teamData => {
             </div>
         </main>
 
-        <footer class="bg-danger bg-gradient text-center p-3 fixed-bottom">
+        <footer class="bg-danger bg-gradient text-center text-light p-3 fixed-bottom">
             <div>&copy;Sir Ubu <bdo dir="rtl">&copy;Sir Ubu</bdo></div>
         </footer>
     </body>
