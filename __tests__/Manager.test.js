@@ -9,8 +9,8 @@ test('creates a new manager object', () => {
     expect(manager.name).toBe('John Doe');
     expect(manager.name).toEqual(expect.any(String));
 
-    expect(manager.id).toBe(341222);
-    expect(manager.id).toEqual(expect.any(Number));
+    expect(manager.id).toBe('341222');
+    expect(manager.id).toEqual(expect.any(String));
 
     expect(manager.email).toBe('john.doe@company.com');
     expect(manager.email).toEqual(expect.any(String));

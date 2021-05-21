@@ -9,8 +9,8 @@ test('creates a new intern object', () => {
     expect(intern.name).toBe('John Doe');
     expect(intern.name).toEqual(expect.any(String));
 
-    expect(intern.id).toBe(341222);
-    expect(intern.id).toEqual(expect.any(Number));
+    expect(intern.id).toBe('341222');
+    expect(intern.id).toEqual(expect.any(String));
 
     expect(intern.email).toBe('john.doe@company.com');
     expect(intern.email).toEqual(expect.any(String));
