@@ -1,11 +1,13 @@
 // NODE INDEX.JS INVOKED LOGIC
 
 // require dependencies
-const inquirer = require('inquirer');
 const { managerPrompts, engineerPrompts, internPrompts, menuPrompt} = require('./utils/prompts');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const pageTemplate = require('./src/page-template');
+const { writeFile, copyFile } = require('./utils/generate-site');
+
 
 // object to store team members
 const team = {
@@ -33,8 +35,8 @@ function addTeamMembers() {
                     .then(({ name, id, email, school }) => {
                         team.interns.push(new Intern(name, id, email, school));
 
-                        let index = team.engineers.length - 1;
-                        console.log(`------------------------------\nAdded intern ${team.engineers[index].getName()}\n------------------------------`);
+                        let index = team.interns.length - 1;
+                        console.log(`------------------------------\nAdded intern ${team.interns[index].getName()}\n------------------------------`);
 
                         return addTeamMembers();
                     });
@@ -51,4 +53,20 @@ managerPrompts()
         team.manager.push(new Manager(name, id, email, officeNumber));
         console.log(`------------------------------\nAdded manager ${team.manager[0].getName()}\n------------------------------`);
     })
-    .then(addTeamMembers);
+    .then(addTeamMembers)
+    .then(() => {
+        return pageTemplate(team)
+    })
+    .then(templateResponse => {
+        return writeFile(templateResponse);
+    })
+    .then(writeFileResponse => {
+        console.log(`==========\n${writeFileResponse.message}\n==========`);
+        return copyFile();
+    })
+    .then(copyFileResponse => {
+        console.log(`==========\n${copyFileResponse.message}\n==========`);
+    })
+    .catch(error => {
+        console.log(error);
+    });

@@ -1,1 +1,5 @@
 /* HTML STYLE SHEET TO BE COPIED WITH GENERATE-SITE.JS */
+
+body {
+    min-height: 100vh;
+}
