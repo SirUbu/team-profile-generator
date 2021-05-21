@@ -46,8 +46,10 @@ function addTeamMembers() {
         })      
 };
 
+// log that application is starting
 console.log(`=======================\nLet's create your team!\n=======================`);
 
+// execute prompts followed by writing data to html
 managerPrompts()
     .then(({ name, id, email, officeNumber}) => {
         team.manager.push(new Manager(name, id, email, officeNumber));
@@ -61,11 +63,11 @@ managerPrompts()
         return writeFile(templateResponse);
     })
     .then(writeFileResponse => {
-        console.log(`==========\n${writeFileResponse.message}\n==========`);
+        console.log(`==================\n${writeFileResponse.message}\n==================`);
         return copyFile();
     })
     .then(copyFileResponse => {
-        console.log(`==========\n${copyFileResponse.message}\n==========`);
+        console.log(`================================\n${copyFileResponse.message}\n================================`);
     })
     .catch(error => {
         console.log(error);

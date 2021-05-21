@@ -3,18 +3,15 @@
 const fs = require('fs');
 
 
-// function to write html file
+// function to write html file using the HTML page template
 const writeFile = pageTemplate => {
     return new Promise((resolve, reject) => {
         fs.writeFile('./dist/index.html', pageTemplate, err => {
-            // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
             if (err) {
                 reject(err);
-                // return out of the function here to make sure the Promise doesn't execute the resolve() function as well
                 return;
             }
 
-            // if everything went well, resolve the Promise and send the successful data to the `.then()` method
             resolve({
                 ok: true,
                 message: 'HTML file created!'
@@ -40,4 +37,5 @@ const copyFile = () => {
     });
 };
 
+// export the writeFile and copyFile functions
 module.exports = { writeFile, copyFile };
