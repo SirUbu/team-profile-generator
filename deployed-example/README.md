@@ -1,0 +1,1 @@
+Here is an example of what the application will generate once completed. Keep in mind the final product from your execution of the application will be added to the `dist/` directory. 
