@@ -1,0 +1,1 @@
+The final index.js and style.css files from the application will be added to this directory for use.
